@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<!--<pre><code class="javascript">-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Writing basic Javasript functions</title>
+  <link rel="stylesheet" type="text/css" href="notes.css" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,600i,700" rel="stylesheet">
+
+
+  <!--  Code Formatting-->
+  <link rel="stylesheet" href="/intensive/notes/codestyles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+  </script>
+  <!--  Code Formatting-->
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>Arrays and array.methods()</h1>
+  </div>
+  <div class="main">
+    <p>
+      Arrays are JavaScript's way of making lists. These lists can store any data types (including strings, numbers, and booleans) and they are ordered, meaning each item has a numbered position. <br /> Something important to note is that JavaScript starts counting from 0 rather than 1, so the first item in an array will be at position 0. This is because JavaScript is <i>zero-indexed.</i>
+    </p>
+
+    <div class="codeblock">
+      <pre><code class="javascript">
+    let condiments = ['Ketchup', 'Mustard', 'Soy Sauce', 'Sriracha'];
+    const utensils = ['Fork', 'Knife', 'Chopsticks'];
+    console.log(condiments);
+    console.log(utensils);
+    utensils = ['Memes'];
+    console.log(utensils);
+      </code></pre>
+      <pre class="console">
+      [ 'Ketchup', 'Mustard', 'Soy Sauce', 'Sriracha']
+      [ 'Fork', 'Knife', 'Chopsticks' ]
+      [ 'Memes' ]
+      </pre>
+    </div>
+    <p>Variables that are assigned with const cannot be reassigned. However, arrays that are declared with const remain mutable, or changeable. This means that we can change the contents of an array, but cannot reassign the variable name to a new array or other data type.
+    </p>
+    <div class="codeblock">
+      <pre><code class="javascript">
+    let condiments = ['Ketchup', 'Mustard', 'Soy Sauce', 'Sriracha'];
+    const utensils = ['Fork', 'Knife', 'Chopsticks', 'Spork'];
+    condiments.push('Salt');
+    console.log(condiments);
+    utensils.pop();
+    console.log(utensils) 
+      </code></pre>
+      <pre class="console">
+      [ 'Ketchup', 'Mustard', 'Soy Sauce', 'Sriracha', 'Salt' ]
+      [ 'Fork', 'Knife', 'Chopsticks' ]
+      </pre>
+    </div>
+    <p>
+      Using array methods we can mess with the data in the array, here the <strong>.push()</strong> method is used to add "Salt" to the condiments array and <strong>.pop()</strong> is used to remove the last element from the utensils array.
+    </p>
+    <h2>Let's use an array to handle Invoker's orbs and spells.</h2>
+    <hr>
+    <p>In my <a href="jsFunctions.html">
+      jsFunctions.html
+      </a> document I started writing a function that accepted a string input and determined which spell Invoker the <strong>DOTA 2</strong> hero would invoke as well as another function that assigned the spell to the appropriate key based on what it was. The string that was used to interpret the correct spell was hard coded into the script, so let's use what we know about <strong> Arrays &amp; Array.methods()</strong> to handle invoker's orbs.
+    </p>
+    <div class="codeblock">
+      <pre><code class="javascript">
+    //An array that holds the current orbs
+    let orbs = ["quas", "wex", "exort"]
+    /*Based on roll from 0-2 adds a new orb to the front of the array 
+    and removes the last.*/
+    let castOrb = () => {
+      orbs.pop()
+      let orbChoice = (Math.floor(Math.random() * 3))
+      switch (orbChoice) {
+        case 0:
+          orbs.unshift("quas")
+          break;
+        case 1:
+          orbs.unshift("wex")
+          break;
+        case 2:
+          orbs.unshift("exort")
+          break;
+      }
+    }
+    console.log(orbs)
+    castOrb()
+    console.log(orbs)
+    castOrb()
+    console.log(orbs)
+    castOrb()
+    console.log(orbs)
+      </code></pre>
+      <pre class="console">
+    [ 'quas', 'wex', 'exort' ]
+    [ 'quas', 'quas', 'wex' ]
+    [ 'exort', 'quas', 'quas' ]
+    [ 'exort', 'exort', 'quas' ]
+      </pre>
+    </div>
+    <p>Fucking mint! That totally worked. 
+    </p>
+  </div>
+</body>
+
+</html>

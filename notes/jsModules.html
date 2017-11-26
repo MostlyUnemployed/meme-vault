@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Writing basic Javasript functions</title>
+  <link rel="stylesheet" type="text/css" href="notes.css" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,600i,700" rel="stylesheet">
+
+  <!--  Code Formatting-->
+  <link rel="stylesheet" href="codestyles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <!--  Code Formatting-->
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>Javascript Modules</h1>
+  </div>
+  <div class="main">
+    <p>Below is an example of how to define a module, and how to export it using the statement module.exports.</p>
+
+    <pre><code class="javascript">// ../1-airplane.js
+    let Airplane = {};
+Airplane.myAirplane = "G6 with a pepe sticker";
+module.exports = Airplane;</code></pre>
+    <p>
+      Now that we've exported some code as a module to use elsewhere in our application we need can use the require() function, This allows us to access the exported module and the behavior we define within it.
+    </p>
+    <pre><code class="javascript">// Arrow Function Syntax
+const Airplane = require ('./1-airplane.js')
+let displayAirplane = () => {
+console.log(Airplane.myAirplane)
+};
+displayAirplane()
+
+//Other Syntax
+const Airplane = require ('./1-airplane.js')
+function displayAirplane() {
+console.log(Airplane.myAirplane)
+};
+displayAirplane()
+</code></pre>
+<p>Instead of module.exports we can use default export in ES6.</p>
+<pre><code class="javascript">let Airplane = {};
+
+Airplane.availableAirplanes = [
+{
+  name: 'AeroJet',
+  fuelCapacity: 800
+ }, 
+ {
+ name: 'SkyJet',
+  fuelCapacity: 500
+ }
+];
+export default Airplane;</code></pre>
+
+  </div>
+</body>
+
+</html>

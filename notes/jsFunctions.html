@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Writing basic Javasript functions</title>
+  <link rel="stylesheet" type="text/css" href="notes.css" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,600i,700" rel="stylesheet">
+
+
+  <!--  Code Formatting-->
+  <link rel="stylesheet" href="/intensive/notes/codestyles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <!--  Code Formatting-->
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>Writing basic Javascript functions</h1>
+
+  </div>
+  <div class="main">
+    <p>Functions are like recipes. They accept data, perform actions on that data, and return a result. The beauty of functions is that they allow us to write a block of code once, then we can reuse it over and over without rewriting the same code.</p>
+    <!--CodeSnippet-->
+    <pre><code class="javascript">const getWeekHours = () => {
+  let dayHours = 24;
+  return dayHours * 7;
+  }
+  getWeekHours()</code></pre>
+    <!--ENDCodeSnippet-->
+    <p>
+      This function called getWeekHours defines a local variable, let dayHours and returns it multiplied by 7. By returning the function we can use it in anywhere, even other functions.
+      <br /><br /> I spent a day or so really pulling my hair out trying to understand the code snippets and context of the code academy examples, I had a hard time understanding the difference between arbitrary code I was writing that creates some data we would in a real program be getting from the user, and the fundemntal code for creating the outcome we want. All of this while having really breezed through the basics and not having a clear grasp of syntax.
+      <br /><br /> A great example a friend provided me is that each function has three parts, you define what variables it will use, create the function itself and then activate it some how. Like you're playing <strong>DOTA 2</strong> and invoking sunstrike.
+    </p>
+
+    <p>E, E, E - Data goes in, Invoke - The function transforms the data into something you want, Sunstrike - You activate the function and get the desired outcome. Now that I have wrapped my head around the Javascript Functions lesson, including: <br />
+    </p>
+    <ul>
+      <li>Rock Paper Scissors (add link to .jsfile)</li>
+      <li>Sleep Debt Calculator</li>
+      <li>Functions Quiz</li>
+    </ul>
+
+    <h2>Let's create a function for Invoke</h2>
+    <hr>
+
+    <p> We can create a cool function to get the appropriate invoker spell using a nested switch and then create another function that handles moving the spells around on his bar. At any one time invoker can have two active spells, mapped to the D &amp; F keys. Depending on which spell is invoked there will be a different outcome. A matrix shows this below:
+    </p>
+    <table>
+      <tr>
+        <th>Spell Invoked</th>
+        <th>Current D</th>
+        <th>Current F</th>
+        <th>Result D</th>
+        <th>Result F</th>
+      </tr>
+      <tr>
+        <td>Cold Snap</td>
+        <td>Cold Snap</td>
+        <td>Tornado</td>
+        <td>Cold Snap</td>
+        <td>Tornado</td>
+      </tr>
+      <tr>
+        <td>Cold Snap</td>
+        <td>Tornado</td>
+        <td>Cold Snap</td>
+        <td>Tornado</td>
+        <td>Cold Snap</td>
+      </tr>
+      <tr>
+        <td>Forge Spirit</td>
+        <td>Cold Snap</td>
+        <td>Tornado</td>
+        <td>Forge Spirit</td>
+        <td>Tornado</td>
+      </tr>
+    </table>
+
+
+    <pre><code class="javascript">
+  // This variable defines Invoker's current arrangement of orbs.
+  let quasWexExort = "qwe"
+  
+  /* getInvoke takes the current arrangement of orbs as a string
+  and returns the appropriate spell. Later I think we'll use an
+  array to manage this.  */
+  
+  const getInvoke = () => {
+  switch (quasWexExort) {
+    case "qqq":
+      return "Cold Snap"
+      break;
+    case "qqw":
+      return "Ghost Walk"
+      break;
+    case "qww":
+      return "Tornadoe"
+      break;
+    case "www":
+      return "EMP"
+      break;
+    case "wwe":
+      return "Alacrity"
+      break;
+    case "wee":
+      return "Chaos Meteor"
+      break;
+    case "eee":
+      return "Sun Strike"
+      break;
+    case "qee":
+      return "Forge Spirit"
+      break;
+    case "qqe":
+      return "Ice Wall"
+      break;
+    case "qwe":
+      return "Deafening Blast"
+      break;
+  }
+}
+
+/* oldSpell and newSpell will hold invoker's two most recently invoked
+spells */
+let newSpell = "None"
+let oldSpell = "None"
+
+/* Cast invoke will check which new spell has been invoked and assign it 
+to the appropriate let. */
+
+const castInvoke = () => {
+// A local variable to hold the new spell
+  let invokedSpell = getInvoke();
+// A local variable holds the old spell
+  let spellHolder = oldSpell;
+// This IF statement shifts spells around based on what was just invoked.
+  if (invokedSpell === newSpell) {
+    console.log(`You've already invoked ${newSpell}! You're currently 
+    holding ${newSpell} and ${oldSpell}.`);
+  } else if (invokedSpell === oldSpell) {
+    oldspell = newSpell;
+    newSpell = spellHolder;
+  } else {
+    oldSpell = newSpell
+    newSpell = invokedSpell
+  }
+}
+</code></pre>
+  </div>
+</body>
+
+</html>
